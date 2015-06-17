@@ -30,7 +30,7 @@ class NeedsRoleMiddleware extends AbstractDefenderMiddleware
 
         if (is_array($roles) and count($roles) > 0) {
             $hasResult = true;
-
+            
             foreach ($roles as $role) {
                 $hasRole = $this->user->hasRole($role);
 
