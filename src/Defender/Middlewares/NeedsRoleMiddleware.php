@@ -17,6 +17,7 @@ class NeedsRoleMiddleware extends AbstractDefenderMiddleware
      */
     public function handle($request, Closure $next, $roles = null, $any = false)
     {
+        $anyRole = true;
         if (is_null($roles)) {
             $roles = $this->getRoles($request);
             $anyRole = $this->getAny($request);
@@ -30,6 +31,7 @@ class NeedsRoleMiddleware extends AbstractDefenderMiddleware
 
         if (is_array($roles) and count($roles) > 0) {
             $hasResult = true;
+            
 
             foreach ($roles as $role) {
                 $hasRole = $this->user->hasRole($role);
